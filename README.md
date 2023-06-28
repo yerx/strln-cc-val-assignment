@@ -1,70 +1,14 @@
-# Getting Started with Create React App
+# Credit Card Validation Assignment
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Description
+The web application implements credit card validation on both the frontend and the backend. Validation on the frontend helps to reduce the number of API calls to save on AWS operation costs.
 
-## Available Scripts
+## Assumptions
+1. When providing credit card information to make a purchase, you typically need to provide the following information: 1. credit card number, 2. the exact name that appears on the credit card, 3. the expiration date, 4. the security code, and 5. the billing address. The web application assumes that properties 2-5 have been provided and are valid.
 
-In the project directory, you can run:
+2. There wasn't enough time to add a payment gateway such as Stripe that would validate the credit card information beyond checking the first digits for a valid credit card company, checking that the credit card number contains only numbers, and checking the length of the credit card number. Ideally, the lambda function would call a third party API with the credit card information and validate it. The working assumption is that the lambda does all of the work to confirm the validity of the credit card information.
 
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## To Do (If there was more time)
+1. Implement security measures such as input validation and cross-site scripting protection.
+2. Implement the required form fields for credit card information including name on the credit card, expiration date, security code, and billing address.
+3. Implement better error handling for the response from the API call.
