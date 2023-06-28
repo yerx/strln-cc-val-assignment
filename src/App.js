@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import * as React from 'react';
 import { 
@@ -10,7 +9,6 @@ import {
   FormHelperText,
   Button,
   Flex,
-  Spacer,
   Box
  } from '@chakra-ui/react';
 
@@ -18,7 +16,6 @@ import {
 function App() {
   const [creditCardNumber, setCreditCardNumber] = React.useState('')
   const [creditCardCompany, setCreditCardCompany] = React.useState(null)
-  const [errorMessage, setErrorMessage] = React.useState(null)
   const [disableButton, setDisableButton] = React.useState(true)
   const [isError, setIsError] = React.useState(false)
 
@@ -53,7 +50,7 @@ function App() {
   }
 
   const identifyCreditCardCompany = (creditCardNumber) => {
-    // switch statement to check the first digit of the credit card number
+    // check the first digits of the credit card number to identify the credit card company
     switch (creditCardNumber[0]) {
       case '4': 
         setCreditCardCompany('Visa');
@@ -78,6 +75,7 @@ function App() {
     }
   }
 
+  // checks that the credit card input contains only numbers
   const checkForNumbersOnly = (creditCardNumber) => {
     if (!/\D/.test(creditCardNumber)) {
       return true
@@ -101,15 +99,11 @@ function App() {
       body: raw,
       redirect: 'follow'
     }
-    // make API call with parameters
+    // make API call with the request options
     fetch("https://t3c5urk8h1.execute-api.us-east-1.amazonaws.com/dev", requestOptions)
     .then(response => response.text())
     .then(result => alert(JSON.parse(result).body))
-    // .then(result => {
-    //   console.log('result ' + result)
-    //   // alert((result))
-    // })
-    .catch(error => console.log('error', error));
+    .catch(error => alert('There was an error: ', error));
   }
 
   return (
